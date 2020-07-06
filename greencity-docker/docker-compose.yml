@@ -1,0 +1,67 @@
+version: '3.1'
+services:
+  core-service:
+    container_name: core-service
+    image: core-service
+    build: 
+      context: .
+      dockerfile: DockerfileCore
+    env_file: env_file
+    ports:
+      - 8080:8080
+    depends_on:
+      - rabbit-server
+      - postgres-server
+    networks:
+       - net-microservice
+       - net-db
+
+  mail-service:
+    container_name: mail-service
+    image: mail-service
+    build:
+      context: .
+      dockerfile: DockerfileEmail
+    env_file: env_file
+    ports:
+      - 8090:8090
+      - 587:587
+    depends_on:
+      - rabbit-server
+    networks:
+      - net-microservice
+
+  rabbit-server:
+    container_name: rabbit-server
+    image: rabbit-server
+    hostname: rabbit-server
+    build:
+      context: .
+      dockerfile: DockerfileRabbit
+    ports:
+       - 5672:5672
+    volumes:
+       - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+       - net-microservice
+
+  postgres-server:
+    image: postgres
+    container_name: postgres-server
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    env_file: env_postgres
+    networks:
+      - net-db
+
+
+volumes:
+    postgres-data:
+    rabbitmq-data:
+networks:
+    net-microservice:
+        driver: bridge
+    net-db:
+        driver: bridge

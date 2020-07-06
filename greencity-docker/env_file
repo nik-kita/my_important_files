@@ -1,0 +1,17 @@
+DATASOURCE_USER=postgres
+DATASOURCE_PASSWORD=postgres
+EMAIL_ADDRESS=mail.sender.greencity@gmail.com
+EMAIL_PASSWORD=Lv-450.Java_Password
+GOOGLE_CLIENT_ID=129513550972-ffqpdq6e5basbn9pcdvroqf20ffcg09f.apps.googleusercontent.com
+DATASOURCE_URL=jdbc:postgresql://postgres-server:5432/greencity
+CLOUD_NAME=greencity-lv448java
+API_KEY=675739387883727
+API_SECRET=3nJsbn28s_RWJJo67kG8OY-ywJ8
+RABBITMQ_HOST=rabbit-server
+RABBITMQ_PASSWORD=rabbitmq
+RABBITMQ_USERNAME=rabbitmq
+MAX_FILE_SIZE=2MB
+MAX_REQUEST_SIZE=2MB
+BUCKET_NAME=staging.greencity-c5a3a.appspot.com
+STATIC_URL=https://storage.cloud.google.com/
+GOOGLE_APPLICATION_CREDENTIALS=/app/google-creds.json

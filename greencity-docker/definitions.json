@@ -1,0 +1,114 @@
+{
+    "users": [
+        {
+            "name": "rabbitmq",
+            "password_hash": "mWDJcqKRA2XEqIcezf0rv86VH8qB3rIjjmUQLyXrDCGM1vNV",
+            "hashing_algorithm": "rabbit_password_hashing_sha256",
+            "tags": "administrator"
+        }
+    ],
+    "vhosts": [
+        {
+            "name": "/"
+        }
+    ],
+    "permissions": [
+        {
+            "user": "rabbitmq",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        }
+    ],
+    "exchanges": [
+      {
+        "name": "email-topic-exchange",
+        "vhost": "/",
+        "type": "topic",
+        "durable": true,
+        "auto_delete": false,
+        "internal": false,
+        "arguments": {}
+      }
+    ],
+    "queues": [
+      {
+        "name": "change-place-status",
+        "vhost": "/",
+        "durable": true,
+        "auto_delete": false,
+        "arguments": {}
+      },
+      {
+        "name": "eco_news_queue",
+        "vhost": "/",
+        "durable": true,
+        "auto_delete": false,
+        "arguments": {}
+      },
+      {
+        "name": "password-recovery-queue",
+        "vhost": "/",
+        "durable": true,
+        "auto_delete": false,
+        "arguments": {}
+      },
+      {
+        "name": "send-report",
+        "vhost": "/",
+        "durable": true,
+        "auto_delete": false,
+        "arguments": {}
+      },
+      {
+        "name": "verify-email-queue",
+        "vhost": "/",
+        "durable": true,
+        "auto_delete": false,
+        "arguments": {}
+      }
+    ],
+    "bindings": [
+      {
+        "source": "email-topic-exchange",
+        "vhost": "/",
+        "destination": "change-place-status",
+        "destination_type": "queue",
+        "routing_key": "change.place.status",
+        "arguments": {}
+      },
+      {
+        "source": "email-topic-exchange",
+        "vhost": "/",
+        "destination": "eco_news_queue",
+        "destination_type": "queue",
+        "routing_key": "eco_news.add",
+        "arguments": {}
+      },
+      {
+        "source": "email-topic-exchange",
+        "vhost": "/",
+        "destination": "password-recovery-queue",
+        "destination_type": "queue",
+        "routing_key": "password.recovery",
+        "arguments": {}
+      },
+      {
+        "source": "email-topic-exchange",
+        "vhost": "/",
+        "destination": "send-report",
+        "destination_type": "queue",
+        "routing_key": "send.report",
+        "arguments": {}
+      },
+      {
+        "source": "email-topic-exchange",
+        "vhost": "/",
+        "destination": "verify-email-queue",
+        "destination_type": "queue",
+        "routing_key": "verify.email",
+        "arguments": {}
+      }
+    ]
+  }

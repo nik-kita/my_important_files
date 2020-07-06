@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="tomatos:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/tomatos_jar</output-path>
+    <root id="archive" name="tomatos.jar">
+      <element id="module-output" name="tomatos" />
+    </root>
+  </artifact>
+</component>
